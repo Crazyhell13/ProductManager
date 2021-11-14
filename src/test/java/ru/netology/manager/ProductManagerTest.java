@@ -16,6 +16,12 @@ class ProductManagerTest {
     private ProductRepository repository = new ProductRepository();
     private ProductManager manager = new ProductManager(repository);
     @Test
+    public void searchEmptyRepository() {
+        Product[] actual = manager.searchBy("Samsung");
+        Product[] expected = new Product[0];
+        assertArrayEquals(expected, actual);
+    }
+    @Test
     public void searchEmptyResult() {
         manager.add(first);
         manager.add(second);
